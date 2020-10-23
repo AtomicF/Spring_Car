@@ -15,13 +15,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 @EnableJpaRepositories("com.example.demo.repository")
 @SpringBootApplication
-public class DemoApplication extends WebSecurityConfigurerAdapter {
+public class CarsApplication extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private AuthenProvider authenProvider;
 
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        SpringApplication.run(CarsApplication.class, args);
     }
 
     @Override
