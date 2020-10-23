@@ -1,7 +1,7 @@
 package com.example.demo.cotroller;
 
-import com.example.demo.entity.Cat;
-import com.example.demo.repository.CatsRepository;
+import com.example.demo.entity.Car;
+import com.example.demo.repository.CarsRepository;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,34 +14,34 @@ import java.util.Map;
 
 @RestController
 @RequestMapping(path = "/api")
-public class CatsController {
+public class CarsController {
 
-    private final CatsRepository catsRepository;
+    private final CarsRepository carsRepository;
 
     private final DataSource dataSource;
 
-    public CatsController(CatsRepository catsRepository, DataSource dataSource) {
-        this.catsRepository = catsRepository;
+    public CarsController(CarsRepository catsRepository, DataSource dataSource) {
+        this.carsRepository = catsRepository;
         this.dataSource = dataSource;
     }
 
-    @GetMapping("/cats/{id}")
-    public Cat getCatById(@PathVariable("id") Integer id) {
-        Cat cat = catsRepository.getOne(id);
-        Cat result = new Cat();
+    @GetMapping("/cars/{id}")
+    public Car getCatById(@PathVariable("id") Integer id) {
+        Car cat = carsRepository.getOne(id);
+        Car result = new Car();
         result.setId(cat.getId());
         result.setName(cat.getName());
         result.setColor(cat.getColor());
-        result.setPawsCount(cat.getPawsCount());
+        result.setNumberOfDoors(cat.getNumberOfDoors());
         return result;
     }
 
-    @GetMapping("/jdbc/cats/{id}")
+    @GetMapping("/jdbc/cars/{id}")
     public Object getCatByIdJdbc(@PathVariable("id") Integer id) {
         NamedParameterJdbcTemplate jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
         Map<String, Integer> paramMap = new HashMap<>();
         paramMap.put("id", id);
-        Map<String, Object> result = jdbcTemplate.queryForMap("SELECT * FROM cats WHERE id=:id", paramMap);
+        Map<String, Object> result = jdbcTemplate.queryForMap("SELECT * FROM cars WHERE id=:id", paramMap);
         return result;
     }
 }

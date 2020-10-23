@@ -11,8 +11,8 @@ import javax.persistence.Table;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "cats")
-public class Cat {
+@Table(name = "cars")
+public class Car {
 
     @Id
     private Integer id;
@@ -23,6 +23,6 @@ public class Cat {
     @Column(name = "color")
     private String color;
 
-    @Column(name = "paws_count")
-    private Long pawsCount;
+    @Column(name = "number_of_doors")
+    private Long numberOfDoors;
 }

@@ -1,6 +1,5 @@
 package com.example.demo.entity;
 
-import lombok.Cleanup;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
