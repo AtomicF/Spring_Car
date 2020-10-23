@@ -15,11 +15,11 @@ import org.springframework.stereotype.Component;
 import java.util.Arrays;
 
 @Component
-public class MyAuthenProvider implements AuthenticationProvider {
+public class AuthenProvider implements AuthenticationProvider {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public MyAuthenProvider(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public AuthenProvider(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }

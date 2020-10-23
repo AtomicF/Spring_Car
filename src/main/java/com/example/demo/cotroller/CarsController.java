@@ -26,18 +26,18 @@ public class CarsController {
     }
 
     @GetMapping("/cars/{id}")
-    public Car getCatById(@PathVariable("id") Integer id) {
-        Car cat = carsRepository.getOne(id);
+    public Car getCarById(@PathVariable("id") Integer id) {
+        Car car = carsRepository.getOne(id);
         Car result = new Car();
-        result.setId(cat.getId());
-        result.setName(cat.getName());
-        result.setColor(cat.getColor());
-        result.setNumberOfDoors(cat.getNumberOfDoors());
+        result.setId(car.getId());
+        result.setName(car.getName());
+        result.setColor(car.getColor());
+        result.setNumberOfDoors(car.getNumberOfDoors());
         return result;
     }
 
     @GetMapping("/jdbc/cars/{id}")
-    public Object getCatByIdJdbc(@PathVariable("id") Integer id) {
+    public Object getCarByIdJdbc(@PathVariable("id") Integer id) {
         NamedParameterJdbcTemplate jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
         Map<String, Integer> paramMap = new HashMap<>();
         paramMap.put("id", id);
